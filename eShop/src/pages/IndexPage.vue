@@ -1,17 +1,24 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      :src="appIcon"
-    >
+  <q-page class="q-pa-md">
+
+    <product-component/>
+    <product-component/>
+    <product-component/>
+    <product-component/>
+    <product-component/>
+    <product-component/>
+    <product-component/>
+
   </q-page>
 </template>
 
 <script>
 import  {mapState} from 'vuex'
+import ProductComponent from "components/products/productComponent";
 
 export default {
   name: 'IndexPage',
+  components: {ProductComponent},
   computed: {
     ...mapState('app', [
       'appIcon'
