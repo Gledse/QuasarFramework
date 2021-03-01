@@ -2,13 +2,20 @@
   <q-page class="flex flex-center">
     <img
       alt="Quasar logo"
-      src="icons/favicon-128x128.png"
+      :src="appIcon"
     >
   </q-page>
 </template>
 
 <script>
+import  {mapState} from 'vuex'
+
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  computed: {
+    ...mapState('app', [
+      'appIcon'
+    ]),
+  }
 }
 </script>

@@ -30,7 +30,7 @@
     <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
       <div class="absolute-bottom bg-transparent">
         <q-avatar size="56px" class="q-mb-sm">
-          <img src="https://avatars.githubusercontent.com/u/53790917?s=460&u=1919af2ed2cab67674820a5f2e6c9713dd1f24c5&v=4">
+          <img :src="userAuthImage">
         </q-avatar>
         <div class="text-weight-bold">eShop</div>
         <div>@gledse_Jamisse</div>
@@ -43,6 +43,7 @@
 
 import HeaderComponent from "components/base/HeaderComponent";
 import EssentialLink from "components/EssentialLink";
+import {mapState} from "vuex";
 
 const linksData = [
   {
@@ -83,6 +84,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('auth', [
+      'userAuthImage'
+    ]),
    toggleOpenDrawer: {
     get() {
     return this.leftDrawerOpen

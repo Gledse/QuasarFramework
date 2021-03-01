@@ -10,23 +10,39 @@
         class="q-mr-sm" />
 
 
-      <q-toolbar-title>eShop</q-toolbar-title>
+      <q-toolbar-title>
+          {{ appTitle }}
+      </q-toolbar-title>
 
       <div class = "q-gutter-sm q-mr-md">
-        <q-btn flat round dense icon="add" />
-        <q-btn flat round dense icon="shopping_cart" />
+        <q-btn flat round dense icon="add" to="/products/add"/>
+        <q-btn flat round dense icon="shopping_cart" to="/cart" />
       </div>
 
-      <q-avatar>
-        <img src="https://avatars.githubusercontent.com/u/53790917?s=460&u=1919af2ed2cab67674820a5f2e6c9713dd1f24c5&v=4">
-      </q-avatar>
+      <q-btn round flat to="/profile">
+        <q-avatar to="/auth">
+          <img :src= "userAuthImage" >
+        </q-avatar>
+      </q-btn>
+
     </q-toolbar>
   </q-header>
 </template>
 
 <script>
+
+import {mapState} from 'vuex'
+
 export default {
-  name: "HeaderComponent"
+  name: "HeaderComponent",
+  computed: {
+    ...mapState('app', [
+      'appTitle'
+    ]),
+    ...mapState('auth', [
+      'userAuthImage'
+    ])
+  }
 }
 </script>
 
