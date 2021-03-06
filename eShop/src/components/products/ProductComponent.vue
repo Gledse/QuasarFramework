@@ -19,7 +19,7 @@
             <div class="col-4 flex flex-center">
               <div class="">
                 <q-btn
-                  to="/products/productId"
+                  to="/products/:productId"
                   label = "Detalhes"
                   color="primary"
                   rounded

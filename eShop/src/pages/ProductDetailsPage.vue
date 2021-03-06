@@ -1,14 +1,16 @@
 <template>
   <div class="q-pa-md text-center">
     <h1>
-      Product Details Page
+      <ProductDetailsComponent/>
     </h1>
   </div>
 </template>
 
 <script>
+import ProductDetailsComponent from "components/products/ProductDetailsComponent";
 export default {
-name: "ProductDetailsPage"
+name: "ProductDetailsPage",
+  components: {ProductDetailsComponent}
 }
 </script>
 

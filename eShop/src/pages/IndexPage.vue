@@ -14,7 +14,7 @@
 
 <script>
 import  {mapState} from 'vuex'
-import ProductComponent from "components/products/productComponent";
+import ProductComponent from "components/products/ProductComponent";
 
 export default {
   name: 'IndexPage',
