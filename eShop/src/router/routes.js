@@ -8,6 +8,7 @@ const routes = [
       { path: '/cart', component: () => import('pages/CartPage.vue') },
       { path: '/auth', component: () => import('pages/AuthPage.vue') },
       { path: '/products/add', component: () => import('pages/ProductAddOrEditPage.vue') },
+      { path: '/products/productId', component: () => import('pages/ProductDetailsPage.vue') },
     ]
   },
 

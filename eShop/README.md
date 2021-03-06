@@ -1,4 +1,4 @@
-# eShop (e_shop)
+# eShop (e-shop)
 
 Aplicativo de vendas online
 

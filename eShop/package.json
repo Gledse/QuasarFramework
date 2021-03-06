@@ -1,9 +1,9 @@
 {
-  "name": "e_shop",
+  "name": "e-shop",
   "version": "0.0.1",
   "description": "Aplicativo de vendas online",
   "productName": "eShop",
-  "author": "Gledse_jamisse",
+  "author": "Gledse_Jamisse",
   "private": true,
   "scripts": {
     "test": "echo \"No test specified\" && exit 0"
