@@ -16,19 +16,19 @@
               600.00 MT
             </div>
           </div>
-            <div class="col-4 flex flex-center">
-              <div class="">
-                <q-btn
-                  to="/products/:productId"
-                  label = "Detalhes"
-                  color="primary"
-                  rounded
-                  size="sm"
-                />
-              </div>
+          <div class="col-4 flex flex-center">
+            <div class="">
+              <q-btn
+                to="/products/:productId"
+                label = "Detalhes"
+                color="primary"
+                rounded
+                size="sm"
+              />
             </div>
           </div>
         </div>
+      </div>
     </q-img>
   </q-card>
 
@@ -36,10 +36,9 @@
 
 <script>
 export default {
-name: "productComponent"
+  name: "productComponent"
 }
 </script>
 
 <style scoped>
-
 </style>

@@ -7,7 +7,6 @@
     <product-component/>
     <product-component/>
     <product-component/>
-    <product-component/>
 
   </q-page>
 </template>

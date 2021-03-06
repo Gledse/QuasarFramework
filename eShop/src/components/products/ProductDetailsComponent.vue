@@ -1,7 +1,8 @@
 <template>
-
   <div>
+
     <ProductDetailsImage/>
+
   </div>
 </template>
 

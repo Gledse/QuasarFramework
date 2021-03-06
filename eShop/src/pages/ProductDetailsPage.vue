@@ -1,8 +1,8 @@
 <template>
   <div class="q-pa-md text-center">
-    <h1>
+
       <ProductDetailsComponent/>
-    </h1>
+
   </div>
 </template>
 
