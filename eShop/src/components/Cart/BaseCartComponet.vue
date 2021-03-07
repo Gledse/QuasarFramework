@@ -5,7 +5,29 @@
       Carrinha
   </div>
 
+  <templete v-for="i in 10">
+
   <ProductInCartComponent/>
+    <q-separator class="q-my-md"/>
+
+  </templete>
+
+  <q-footer>
+    <div>
+
+      <div>
+
+      </div>
+      <div>
+        <q-btn
+          label="Pagar (MPesa)"
+          class="full-width"
+          color="primary"
+        />
+      </div>
+
+    </div>
+  </q-footer>
 
 </div>
 </template>

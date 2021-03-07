@@ -17,10 +17,10 @@
 
           <q-input class="full-width" input-class="text-center" filled v-model="qtd" :dense="true">
             <template v-slot:prepend>
-              <q-btn icon="remove" round color="primary" dense/>
+              <q-btn @click="qtd--" icon="remove" color="grey" text-color="red" flat dense/>
             </template>
             <template v-slot:append>
-              <q-btn icon="add" round color="primary" dense/>
+              <q-btn @click="qtd++" icon="add" color="grey" text-color="primary" flat dense/>
             </template>
           </q-input>
 
