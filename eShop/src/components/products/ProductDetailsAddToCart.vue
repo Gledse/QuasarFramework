@@ -6,11 +6,13 @@
        <q-select dense outlined v-model="model" :options="options" label="Quantidade"/>
 
      </div>
-     <div class="col-4">
+     <div class="col-4 q-pl-sm">
        <q-btn
          label="Adicionar"
          dense
-         rounded
+         color="grey"
+         class="full-width full-height"
+         unelevated
       />
      </div>
 
