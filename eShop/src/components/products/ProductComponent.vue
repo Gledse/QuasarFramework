@@ -1,6 +1,6 @@
 <template>
 
-  <q-card class="my-card q-mb-md">
+  <q-card class="my-card q-mb-md" style="min-height: 210px">
     <q-img
       src="https://cdn.quasar.dev/img/parallax2.jpg"
       basic
