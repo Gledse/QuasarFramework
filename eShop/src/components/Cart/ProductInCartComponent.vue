@@ -5,6 +5,15 @@
   <q-item>
     <q-item-section top thumbnail class="q-ml-none">
       <img src="https://cdn.quasar.dev/img/mountains.jpg">
+
+      <q-btn
+        label="Remover"
+        text-color="red"
+        size="sm"
+        flat
+        class="q-mt-md"
+        unelevated
+      />
     </q-item-section>
 
     <q-item-section>
@@ -15,7 +24,7 @@
 
         <div class="col-6" style="width: 130px">
 
-          <q-input class="full-width" input-class="text-center" filled v-model="qtd" :dense="true">
+          <q-input class="full-width" input-class="text-center" outlined v-model="qtd" :dense="true">
             <template v-slot:prepend>
               <q-btn @click="qtd--" icon="remove" color="grey" text-color="red" flat dense/>
             </template>
