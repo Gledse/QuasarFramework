@@ -5,12 +5,12 @@
       Carrinha
   </div>
 
-  <templete v-for="i in 10">
+  <template v-for="i in 10">
 
   <ProductInCartComponent/>
     <q-separator class="q-my-md"/>
 
-  </templete>
+  </template>
 
   <q-footer class="bg-grey-2">
     <div class="q-pa-md">
@@ -42,7 +42,6 @@
           dense
           color="primary"
           class="full-width"
-          unelevated
         />
       </div>
 

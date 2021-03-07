@@ -12,7 +12,6 @@
         size="sm"
         flat
         class="q-mt-md"
-        unelevated
       />
     </q-item-section>
 
