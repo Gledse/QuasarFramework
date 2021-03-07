@@ -1,14 +1,16 @@
 <template>
 <div class="q-my-md text-center">
-  <h1>
-    Cart Page
-  </h1>
+
+  <base-cart-componet/>
+
 </div>
 </template>
 
 <script>
+import BaseCartComponet from "components/Cart/BaseCartComponet";
 export default {
-name: "CartPage"
+name: "CartPage",
+  components: {BaseCartComponet}
 }
 </script>
 
