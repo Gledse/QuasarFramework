@@ -1,14 +1,16 @@
 <template>
   <div class="q-pa-md text-center">
-    <h1>
-      Product Add or Edit Page
-    </h1>
+
+    <AddOrEditProductComponent/>
+
   </div>
 </template>
 
 <script>
+import AddOrEditProductComponent from "components/products/AddOrEditProductComponent";
 export default {
-  name: "ProductAddOrEditPage"
+  name: "ProductAddOrEditPage",
+  components: {AddOrEditProductComponent}
 }
 </script>
 
