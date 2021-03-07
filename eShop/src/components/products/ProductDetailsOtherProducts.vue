@@ -27,7 +27,8 @@ export default {
 name: "ProductDetailsOtherProducts",
   data () {
     return{
-      slide: 1
+      slide: 1,
+      autoplay: true
     }
   }
 }
