@@ -14,7 +14,7 @@
 
     <q-scroll-area
       horizontal
-      style="height: 60px; width: 318px;"
+      :style="`height: 60px; width: ${ $q.screen.width - 30.5 }px;`"
       class="bg-grey-1 rounded-borders"
     >
       <div class="row no-wrap">
