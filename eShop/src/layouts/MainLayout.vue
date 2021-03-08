@@ -10,9 +10,11 @@
       @toggleDrawer="leftDrawerOpen= !leftDrawerOpen"
     />
 
-    <q-page-container>
-      <router-view />
-    </q-page-container>
+    <div class="row">
+      <q-page-container class="col-12 col-md-8">
+        <router-view />
+      </q-page-container>
+    </div>
   </q-layout>
 </template>
 
