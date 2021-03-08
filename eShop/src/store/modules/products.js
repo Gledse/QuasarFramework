@@ -20,7 +20,11 @@ const getters = {
 
 }
 const actions = {
-
+      getProducts ({ stateA, commit, dispatch }) {
+        axios.get(stateA.SERVER_URL + 'products').then(response => {
+          console.log('Server response: ', response)
+        })
+      }
 }
 export default {
   namespaced: true,
