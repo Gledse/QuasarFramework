@@ -27,7 +27,6 @@
       <div class = "q-gutter-sm q-mr-md">
         <q-btn flat round dense icon="add" to="/products/add"/>
         <q-btn flat round dense icon="shopping_cart" to="/cart"/>
-        <q-badge color="red" floating>4</q-badge>
       </div>
 
       <q-btn round flat to="/profile">
