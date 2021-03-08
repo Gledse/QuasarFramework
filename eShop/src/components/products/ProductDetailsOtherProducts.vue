@@ -1,7 +1,7 @@
 <template>
   <div class="q-my-md" style="height: 200px">
 
-    <div class="q-pa-md " >
+    <div class="q-pa-md ">
       <!--q-pr-md q-py-md bg-white q-mt-sm-->
       <q-carousel
         animated

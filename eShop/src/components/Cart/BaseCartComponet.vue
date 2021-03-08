@@ -12,10 +12,10 @@
 
   </template>
 
-  <q-footer class="bg-grey-2 row">
-    <div class="q-pa-md">
+  <q-footer class="row" style="background: transparent">
+    <div class="q-pa-md bg-grey-2 col-12 col-md-7">
 
-      <div class="q-pa-md text-grey-8 col-12 col-md-8">
+      <div class="q-pa-md text-grey-8 ">
         <div class="text-bold text-primary">Resumo da compra</div>
 
         <div class="row q-pt-md">

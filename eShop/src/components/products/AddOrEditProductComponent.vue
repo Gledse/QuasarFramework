@@ -32,8 +32,10 @@
         type="textarea"
       />
 
-      <q-footer class="q-pr-md q-py-md bg-white">
-        <q-btn label="Adicionar" type="submit" color="primary" class="full-width"/>
+      <q-footer class="row q-pr-md q-py-md bg-white">
+        <div class="col-12 col-md-7">
+          <q-btn label="Adicionar" type="submit" color="primary" class="full-width"/>
+        </div>
       </q-footer>
     </q-form>
 
