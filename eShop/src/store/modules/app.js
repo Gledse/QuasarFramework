@@ -1,4 +1,4 @@
-const stateA = {
+const state = {
   appTitle: "eShop",
   appIcon: "icons/favicon-128x128.png",
 }
@@ -13,7 +13,7 @@ const actions = {
 }
 export default {
   namespaced: true,
-  state : stateA,
+  state,
   mutations,
   getters,
   actions,

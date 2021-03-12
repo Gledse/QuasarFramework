@@ -1,11 +1,13 @@
 
+import Vue from 'vue'
+
 import axios from 'axios'
 
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 
-const stateA = {
+const state = {
 
   products: {},
   SERVER_URL: 'https://lives.explicador.co.mz/api/',
@@ -15,20 +17,41 @@ const stateA = {
 }
 const mutations = {
 
+  addProduct(state, payload) {
+    Vue.set(state.products, payload.id, payload)
+  }
 }
 const getters = {
-
+  productImage : () => product => {
+    let path = 'https://lives.explicador.co.mz/storage/'
+    return product.image_url.includes('http') ? product.image_url : path + product.image_url
+  },
+      getHeader : (state) => {
+        return {
+          headers: {
+            'Authorization': state.AUTHORIZATION_KEY,
+            'Content-Type' : 'application/json',
+            'Accept' : 'application/json'
+          }
+        };
+      },
 }
 const actions = {
-      getProducts ({ stateA, commit, dispatch }) {
-        axios.get(stateA.SERVER_URL + 'products').then(response => {
+      getProducts ({ state, commit, getters, dispatch }) {
+        axios.get(state.SERVER_URL + 'products', getters.getHeader).then(response => {
           console.log('Server response: ', response)
+          dispatch('handleAddProduct', response.data)
+        })
+      },
+      handleAddProduct ({state, commit, getters, dispatch }, allData){
+        allData.forEach(object => {
+          commit('addProduct', object)
         })
       }
 }
 export default {
   namespaced: true,
-  state : stateA,
+  state,
   mutations,
   getters,
   actions,

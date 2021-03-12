@@ -2,7 +2,7 @@
 
   <q-card class="my-card q-mb-md" style="min-height: 210px">
     <q-img
-      src="https://cdn.quasar.dev/img/parallax2.jpg"
+      :src="productImage(product)"
       basic
     >
       <div class="absolute-bottom text-subtitle2 text-center">
@@ -10,10 +10,10 @@
         <div class="row">
           <div class="col-8 text-left">
             <div class="text-h6">
-              teste do app
+              {{ product.name }}
             </div>
             <div class="text-bold">
-              600.00 MT
+              {{ product.price }} MT
             </div>
           </div>
           <div class="col-4 flex flex-center">
@@ -35,8 +35,16 @@
 </template>
 
 <script>
+
+import  { mapGetters } from 'vuex'
 export default {
-  name: "productComponent"
+  name: "productComponent",
+  props: ['product'],
+  computed: {
+    ...mapGetters('product', [
+      'productImage'
+    ])
+  },
 }
 </script>
 
