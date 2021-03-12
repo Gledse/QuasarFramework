@@ -24,17 +24,20 @@ const mutations = {
 const getters = {
   productImage : () => product => {
     let path = 'https://lives.explicador.co.mz/storage/'
-    return product.image_url.includes('http') ? product.image_url : path + product.image_url
+    return product.image_url.includes("http") ? product.image_url : path + product.image_url
   },
-      getHeader : (state) => {
-        return {
-          headers: {
-            'Authorization': state.AUTHORIZATION_KEY,
-            'Content-Type' : 'application/json',
-            'Accept' : 'application/json'
-          }
-        };
-      },
+  getHeader : (state) => {
+    return {
+      headers: {
+        'Authorization': state.AUTHORIZATION_KEY,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    };
+  },
+  getProductById: (state) => productId => {
+    return state.product[productId]
+  },
 }
 const actions = {
       getProducts ({ state, commit, getters, dispatch }) {

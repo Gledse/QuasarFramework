@@ -7,8 +7,8 @@
 -->
     <product-component
         v-for="product in products"
-       :key="product.id"
-       :product="product"
+        :key="product.id"
+        :product="product"
      />
 
    </q-page>
