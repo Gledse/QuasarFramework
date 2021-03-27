@@ -43,7 +43,12 @@
 
       <q-footer class="row q-pr-md q-py-md bg-white">
         <div class="col-12 col-md-7">
-          <q-btn label="Adicionar" :loading="loading" type="submit" color="primary" class="full-width"/>
+          <q-btn
+            label="Adicionar"
+            :loading="loading"
+            type="submit"
+            color="primary"
+            class="full-width"/>
         </div>
       </q-footer>
     </q-form>
