@@ -56,7 +56,7 @@ const actions = {
           commit('loading', true)
 
           return axios.post(state.SERVER_URL + 'products', payload, getters.getHeader).then(response => {
-          let Object = response.data
+          let object = response.data
           commit('loading', false)
 
           console.log('Server response: ', response)
