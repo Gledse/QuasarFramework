@@ -53,7 +53,7 @@ const actions = {
       },
       addNewProduct ({ state, commit, getters, dispatch }, payload){
 
-          commit('loading', true)
+          commit('loading', true )
 
           return axios.post(state.SERVER_URL + 'products', payload, getters.getHeader).then(response => {
           let object = response.data
