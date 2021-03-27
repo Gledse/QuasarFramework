@@ -66,7 +66,7 @@ const actions = {
           return object
         }).catch(error => {
           console.error('Server error: ', error)
-          commit('loading', true)
+          commit('loading', false)
           return null
         })
       },
