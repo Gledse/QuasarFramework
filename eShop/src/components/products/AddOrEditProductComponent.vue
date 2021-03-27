@@ -3,7 +3,6 @@
 
     <q-form
       @submit="onSubmit"
-      @reset="onReset"
       class="q-gutter-md"
     >
       <q-input
@@ -25,6 +24,16 @@
           val => val > 0 && val < 1000000 || 'O preço deve ser valido'
         ]"
       />
+      <q-input
+        filled
+        type="text"
+        v-model="formData.image_url"
+        label="Link da imagem:"
+        lazy-rules
+        :rules="[
+          val => val !== null && val !== '' || 'Insira a imagem do produto',
+        ]"
+      />
 
       <q-input
         v-model="formData.description"
@@ -34,7 +43,7 @@
 
       <q-footer class="row q-pr-md q-py-md bg-white">
         <div class="col-12 col-md-7">
-          <q-btn label="Adicionar" type="submit" color="primary" class="full-width"/>
+          <q-btn label="Adicionar" :loading="loading" type="submit" color="primary" class="full-width"/>
         </div>
       </q-footer>
     </q-form>
@@ -43,36 +52,37 @@
 </template>
 
 <script>
+import {mapActions, mapState} from "vuex"
+
 export default {
 name: "AddOrEditProductComponent",
   data () {
     return {
       formData: {
-        title: "",
-        description: "",
+        title: '',
+        description: '',
+        image_url: '',
         price: 0
 
       }
     }
   },
 
+  computed: {
+  ...mapState('product', [
+    'loading'
+  ])
+  },
   methods: {
+  ...mapActions('product',[
+    'addNewProduct'
+  ]),
     onSubmit() {
-      if (this.accept !== true) {
-        this.$q.notify({
-          color: 'red-5',
-          textColor: 'white',
-          icon: 'warning',
-          message: 'You need to accept the license and terms first'
-        })
-      } else {
-        this.$q.notify({
-          color: 'green-4',
-          textColor: 'white',
-          icon: 'cloud_done',
-          message: 'Submitted'
-        })
-      }
+      this.addNewProduct(this.formData).then (product => {
+        if (product) {
+        this.$router.push('/products/' + product.id)
+        }
+      })
     },
 
     onReset() {

@@ -19,6 +19,9 @@ const mutations = {
 
   addProduct(state, payload) {
     Vue.set(state.products, payload.id, payload)
+  },
+  loading(state, payload){
+    state.loading = payload
   }
 }
 const getters = {
@@ -26,6 +29,7 @@ const getters = {
     let path = 'https://lives.explicador.co.mz/storage/'
     return product.image_url.includes("http") ? product.image_url : path + product.image_url
   },
+
   getHeader : (state) => {
     return {
       headers: {
@@ -35,15 +39,35 @@ const getters = {
       }
     };
   },
+
   getProductById: (state) => productId => {
-    return state.product[productId]
-  },
+    return state.products[productId]
+  }
 }
 const actions = {
       getProducts ({ state, commit, getters, dispatch }) {
         axios.get(state.SERVER_URL + 'products', getters.getHeader).then(response => {
           console.log('Server response: ', response)
           dispatch('handleAddProduct', response.data)
+        })
+      },
+      addNewProduct ({ state, commit, getters, dispatch }, payload){
+
+          commit('loading', true)
+
+          return axios.post(state.SERVER_URL + 'products',payload, getters.getHeader).then(response => {
+          let Object = response.data
+          commit('loading', false)
+
+          console.log('Server response: ', response)
+
+          commit('addProduct', object)
+
+          return object
+        }).catch(error => {
+          console.error('Server error: ', error)
+          commit('loading', true)
+          return null
         })
       },
       handleAddProduct ({state, commit, getters, dispatch }, allData){

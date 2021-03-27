@@ -15,10 +15,11 @@
         @mouseenter="autoplay = false"
         @mouseleave="autoplay = true"
       >
-        <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-        <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-        <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+        <q-carousel-slide
+          v-for="(image, index) in composeImage"
+          :name="index"
+          :img-src="image"
+        />
       </q-carousel>
     </div>
 
@@ -27,12 +28,32 @@
 </template>
 
 <script>
+
+import {mapGetters, mapState} from "vuex"
+
 export default {
 name: "ProductDetailsOtherProducts",
+  props: ['product'],
   data () {
     return{
       slide: 1,
       autoplay: true
+    }
+  },
+  computed: {
+  ...mapState('product', [
+    'products'
+  ]),
+    ...mapGetters('product', [
+      'productImage'
+    ]),
+    composeImage(){
+    let images = []
+      Object.keys(this.products).forEach(key => {
+        let Object = this.products[key]
+        images.push(this.productImage(Object))
+      })
+      return images
     }
   }
 }
