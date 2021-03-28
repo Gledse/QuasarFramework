@@ -20,7 +20,7 @@ const mutations = {
   addProduct(state, payload) {
     Vue.set(state.products, payload.id, payload)
   },
-  loading(state, payload){
+  loading(state, payload) {
     state.loading = payload
   }
 }
@@ -49,6 +49,7 @@ const actions = {
         axios.get(state.SERVER_URL + 'products', getters.getHeader).then(response => {
           console.log('Server response: ', response)
           dispatch('handleAddProduct', response.data)
+          commit('addProduct', object)
         })
       },
       addNewProduct ({ state, commit, getters, dispatch }, payload){
@@ -66,9 +67,9 @@ const actions = {
           return object
         }).catch(error => {
           console.error('Server error: ', error)
-          commit('loading', false)
-          return null
-        })
+            commit('loading', false)
+            return null
+          })
       },
       handleAddProduct ({state, commit, getters, dispatch }, allData){
         allData.forEach(object => {

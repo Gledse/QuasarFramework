@@ -85,7 +85,7 @@ name: "AddOrEditProductComponent",
     onSubmit() {
       this.addNewProduct(this.formData).then (product => {
         if (product) {
-        this.$router.push('/products/' + product.id)
+          this.$router.push('/products/' + product.id)
         }
       })
     },
