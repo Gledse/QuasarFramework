@@ -1,16 +1,23 @@
 <template>
   <div v-if="product">
-<!--
-    <pre>
-      product: {{ product }}
-    </pre>
-  -->
+
     <ProductDetailsImage :product="product" />
 
     <product-details-prices :product="product" />
 
     <q-separator class="q-my-md"/>
-    <Product-details-add-to-cart :product="product" />
+<!--
+    <pre>
+      productInCart: {{ productInCart }}
+    </pre>
+-->
+    <div v-if="totalValue" class="q-mt-md q-pt-md text-left">
+
+      {{ product.price }} x {{ qtd }} = <span style="font-size: 25pt; font-weight: bold">{{ totalValue }}</span> <span class="text-bold">Valor Total</span>
+
+    </div>
+
+    <Product-details-add-to-cart @newQtd="qtd = parseInt($event)" :product="product" />
     <q-separator class="q-my-md"/>
 
     <Product-details-other-products :product="product" />
@@ -41,16 +48,23 @@ import {mapActions, mapGetters, mapState} from 'vuex'
 export default {
 name: "ProductDetailsComponent",
   components: {ProductDetailsOtherProducts, ProductDetailsAddToCart, ProductDetailsPrices, ProductDetailsImage},
-
+  data () {
+  return {
+    qtd: 0,
+  }
+  },
   computed: {
 
     ...mapState('product',[
-      'products'
+      'products', /*'productInCart'*/
     ]),
 
   ...mapGetters('product',[
     'getProductById'
   ]),
+    totalValue (){
+      return this.product.price * this.qtd
+    },
   product () {
     return this.getProductById(this.productId)
   },
