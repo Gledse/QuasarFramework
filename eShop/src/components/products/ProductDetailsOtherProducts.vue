@@ -18,6 +18,7 @@
         <q-carousel-slide
           v-for="(image, index) in composeImage"
           :name="index"
+          :key="index"
           :img-src="image"
         />
       </q-carousel>

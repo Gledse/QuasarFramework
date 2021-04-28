@@ -95,7 +95,19 @@ const actions = {
         }
         commit('updateCart', productInCart)
 
-      }
+      },
+      getCartSelection ({}) {
+        let items = LocalStorage.getItem(state.localStorageCartKey)
+        if (items && items !== null && items !== 'null'){
+          commit('updateCart', items)
+        }
+      },
+      removeFromCart({state, commit}, payload){
+        let productInCart = state.productInCart
+       let lastArray = productInCart.filter(p => p.id !== payload.id)
+
+       commit('updateCart', lastArray)
+     }
 }
 export default {
   namespaced: true,

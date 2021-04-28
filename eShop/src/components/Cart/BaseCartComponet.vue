@@ -5,9 +5,11 @@
       Carrinha
   </div>
 
-  <template v-for="i in 10">
+  <template v-for="productCarted in productInCart">
 
-  <ProductInCartComponent/>
+  <ProductInCartComponent
+    :productCarted="productCarted"
+   />
     <q-separator class="q-my-md"/>
 
   </template>
@@ -23,7 +25,7 @@
             Quantidade:
           </div>
           <div class="col-6  text-h6 text-right">
-            10 Produtos
+            {{ totalProduct }} Produtos
           </div>
         </div>
         <div class="row q-pb-md">
@@ -31,7 +33,7 @@
             Valor Total:
           </div>
           <div class="col-6  text-h6 text-right">
-            89,00 MT
+            {{ totalSumProduct }} MT
           </div>
         </div>
 
@@ -52,10 +54,50 @@
 </template>
 
 <script>
+import {mapState, mapGetters, mapActions} from 'vuex'
 import ProductInCartComponent from "components/Cart/ProductInCartComponent";
 export default {
 name: "BaseCartComponet",
-  components: {ProductInCartComponent}
+  components: {ProductInCartComponent},
+  computed: {
+  ...mapState('product' , [
+    'productInCart', 'products'
+  ]),
+    ...mapGetters('product' , [
+      'getProductById'
+    ]),
+    totalProduct () {
+    let total = 0
+      this.productInCart.forEach(p => {
+        total += p.qtd
+      })
+      return total
+    },
+    totalSumProduct () {
+      let total = 0
+      this.productInCart.forEach(p => {
+
+        let prod = this.getProductById(p.id)
+
+        if (!prod) return;
+        total += (p.qtd * prod.price)
+      })
+      return total
+    }
+  },
+  methods: {
+    ...mapActions('product', [
+      'getProducts'
+    ]),
+    initialize () {
+      if (Object.keys(this.products).length === 0) {
+        this.getProducts ()
+      }
+    }
+  },
+  mounted (){
+    this.initialize()
+  }
 }
 </script>
 

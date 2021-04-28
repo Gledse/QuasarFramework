@@ -27,7 +27,10 @@
       <div class = "q-gutter-sm q-mr-md">
         <q-btn flat round dense icon="add" to="/products/add"/>
         <q-btn flat round dense icon="shopping_cart" to="/cart">
-        <q-badge color="red-5" floating>4</q-badge>
+
+        <q-badge v-if="productInCart.length" color="red-5" floating>
+          {{ productInCart.length }}
+        </q-badge>
         </q-btn>
       </div>
 
@@ -50,6 +53,9 @@ export default {
   computed: {
     ...mapState('app', [
       'appTitle'
+    ]),
+    ...mapState('product', [
+      'productInCart'
     ]),
     ...mapState('auth', [
       'userAuthImage'

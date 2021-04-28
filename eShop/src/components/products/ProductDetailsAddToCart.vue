@@ -27,7 +27,7 @@
 
 <script>
 
-import { mapActions } from 'vuex'
+import {mapActions, mapState} from 'vuex'
 export default {
   name: "ProductDetailsAddToCart",
   props:['product'],
@@ -39,10 +39,35 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState('product', [
+        'productInCart'
+    ])
+  },
   methods: {
     ...mapActions('product', [
       'addToCart'
-    ])
+    ]),
+    initialize () {
+      if (this.productInCart.length){
+
+        //console.log('Produtos recuperados')
+
+        let product = this.productInCart.find(p => p.id === this.product.id)
+
+        //console.log('Product:', product)
+
+        if (product){
+          this.model = '' + product.qtd
+          this.$emit('newQtd', this.model)
+        }
+      }/*else {
+        console.log('Produtos não recuperados')
+      }*/
+    },
+    mounted () {
+      this.initialize()
+    }
   }
 }
 </script>
